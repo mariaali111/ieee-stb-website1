@@ -1412,14 +1412,31 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (max-width: 820px) {
-  .site-shell main { padding-top: 70px; }
-  .team-leadership-grid,
-  .team-groups { grid-template-columns: 1fr; }
-  .lead-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-shell main {
+    padding-top: 70px;
+  }
+
+  .team-leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 560px) {
-  .lead-grid { grid-template-columns: 1fr; }
+  .lead-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-selector {
+    grid-template-columns: 1fr;
+  }
 }
 
 
@@ -2203,4 +2220,27 @@ section[id] { scroll-margin-top: 92px; }
   background: transparent !important;
 
   display: block;
+}
+/* ============================================================
+   CORE TEAM / LEADERSHIP PHOTOS
+   ============================================================ */
+
+.leadership-card .person-image {
+  width: 72px !important;
+  height: 88px !important;
+  min-width: 72px !important;
+  min-height: 88px !important;
+  flex: 0 0 72px;
+
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.leadership-card .person-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
 }
