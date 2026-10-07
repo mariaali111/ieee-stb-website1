@@ -35,6 +35,7 @@ export const teams = [
     members: [
       "Zainab Khan", 
       "Kunal Varshney",
+      "Alishba Khan",
       "Ashutosh Gautam", 
       "Tanishka Singh",
       "Md Adnan"
