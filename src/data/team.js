@@ -13,6 +13,7 @@ export const leadership = [
   { role: "Joint Secretary", name: "Riiya Gupta" },
   { role: "Joint Secretary", name: "Sadia Peerzada"},
   { role: "Treasurer", name: "Mustafa Rais" },
+  { role: "Joint Treasurer", name: "Syed Ali Jawad"},
   { role: "PG Representative", name: "Arsalaan Waheed Ansari"},
 ];
 
@@ -38,7 +39,6 @@ export const teams = [
       "Alishba Khan",
       "Ashutosh Gautam", 
       "Tanishka Singh",
-      "Md Adnan"
     ],
   },
   {
@@ -53,10 +53,10 @@ export const teams = [
       "Zara Peerzada", 
       "Yaseera",
       "Nadir Ahmad", 
-      "Zainul Abideen", 
       "Jannat Sharma",
       "Nuwaira Noor",
       "Bhoomi Varshney",
+      "Areeb Aftab",
     ],
   },
   {
@@ -89,6 +89,8 @@ export const teams = [
       "Adeeba Malik",
       "Mohammad Hamza Kamran Khan",
       "Ayesha Mazhar",
+      "Samad",
+      "Ibraheem",
     ],
   },
   {
@@ -105,6 +107,7 @@ export const teams = [
       "Ayaan Ansari",
       "Md Hamid Ansari",
       "Falaq Iqbal",
+      "Danish"
     ],
   },
   {
@@ -124,7 +127,9 @@ export const teams = [
     name: "Volunteer Corps",
     lead: null,
     members: [
-      "Tanishka Bansal",
+      "Md Adnan",
+      "Zainul Abideen", 
+      "Umra Khan",
     ],
   },
 ];
