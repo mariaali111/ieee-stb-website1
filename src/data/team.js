@@ -89,8 +89,8 @@ export const teams = [
       "Adeeba Malik",
       "Mohammad Hamza Kamran Khan",
       "Ayesha Mazhar",
-      "Samad",
-      "Ibraheem",
+      "Abdul Samad Khan",
+      "Mohammad Ibraheem",
     ],
   },
   {
