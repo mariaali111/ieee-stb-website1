@@ -2065,6 +2065,30 @@ section[id] { scroll-margin-top: 92px; }
     border-color: #D7E6F0;
   }
 
+  .membership-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.membership-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #00629B;
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.membership-cta a:hover {
+  background: #003B5C;
+}
+
   @media (max-width: 1100px) {
     .membership-benefits {
       grid-template-columns: repeat(2, 1fr);

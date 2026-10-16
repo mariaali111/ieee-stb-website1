@@ -46,7 +46,6 @@ export default function Membership() {
                 className="membership-card"
                 key={benefit.title}
               >
-
                 <div className="membership-card-icon">
                   <Icon
                     size={30}
@@ -55,13 +54,22 @@ export default function Membership() {
                 </div>
 
                 <h3>{benefit.title}</h3>
-
                 <p>{benefit.description}</p>
 
               </article>
             );
           })}
 
+        </div>
+
+        <div className="membership-cta">
+          <a
+            href="https://www.ieee.org/membership"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Join IEEE <span>→</span>
+          </a>
         </div>
 
       </div>
