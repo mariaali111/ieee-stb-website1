@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+
+import { useEffect, useLayoutEffect, useState } from "react";
 
 import { navItems } from "./config/navItems";
 
@@ -12,32 +13,46 @@ import Team from "./sections/Team";
 import Events from "./sections/Events";
 import Techfieeeesta26 from "./sections/Techfieeeesta26";
 import Membership from "./sections/Membership";
-//import Gallery from "./sections/Gallery";
+import Gallery from "./sections/Gallery";
 import Contact from "./sections/Contact";
 
 export default function App() {
   const [open, setOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [activeSection, setActiveSection] = useState(window.location.hash || "#home");
+  const [showFullGallery, setShowFullGallery] = useState(false);
+  const [homeScrollY, setHomeScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState(
+    window.location.hash || "#home"
+  );
 
-  // Active nav tab follows the actual section positions while scrolling
-  /*useEffect(() => {
+  // Track the active navigation section on the homepage.
+  useEffect(() => {
+    if (showFullGallery) return;
+
     const updateActiveSection = () => {
       const marker = window.scrollY + 120;
+
       const sections = navItems
         .map(([, href]) => document.querySelector(href))
         .filter(Boolean);
 
       let current = "#home";
+
       for (const section of sections) {
-        if (section.offsetTop <= marker) current = `#${section.id}`;
+        if (section.offsetTop <= marker) {
+          current = `#${section.id}`;
+        }
       }
+
       setActiveSection(current);
     };
 
     updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
+
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
+    });
     window.addEventListener("resize", updateActiveSection);
     window.addEventListener("hashchange", updateActiveSection);
 
@@ -46,11 +61,29 @@ export default function App() {
       window.removeEventListener("resize", updateActiveSection);
       window.removeEventListener("hashchange", updateActiveSection);
     };
-  }, []);*/
+  }, [showFullGallery]);
+
+  // Position the page after React commits the view change.
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: showFullGallery ? 0 : homeScrollY,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [showFullGallery, homeScrollY]);
 
   const goTo = (href) => {
     setActiveSection(href);
     setOpen(false);
+  };
+
+  const handleViewAll = () => {
+    setHomeScrollY(window.scrollY);
+    setShowFullGallery(true);
+  };
+
+  const handleBackToHome = () => {
+    setShowFullGallery(false);
   };
 
   return (
@@ -59,17 +92,39 @@ export default function App() {
       <div className="ambient ambient-a" />
       <div className="ambient ambient-b" />
 
-      <Navbar open={open} setOpen={setOpen} activeSection={activeSection} goTo={goTo} />
+      {!showFullGallery && (
+        <Navbar
+          open={open}
+          setOpen={setOpen}
+          activeSection={activeSection}
+          goTo={goTo}
+        />
+      )}
 
       <main>
-        <Home goTo={goTo} />
-        <About />
-        <Team />
-        <Events onSelectEvent={setSelectedEvent} />
-        <Techfieeeesta26 />
-        <Membership />
-        {/*Gallery onOpenImage={setLightboxImage}*/}
-        <Contact />
+        {showFullGallery ? (
+          <Gallery
+            fullGallery
+            onOpenImage={setLightboxImage}
+            onBack={handleBackToHome}
+          />
+        ) : (
+          <>
+            <Home goTo={goTo} />
+            <About />
+            <Team />
+            <Events onSelectEvent={setSelectedEvent} />
+            <Techfieeeesta26 />
+
+            <Gallery
+              onOpenImage={setLightboxImage}
+              onViewAll={handleViewAll}
+            />
+
+            <Membership />
+            <Contact />
+          </>
+        )}
       </main>
 
       <EventModal
@@ -77,7 +132,11 @@ export default function App() {
         onClose={() => setSelectedEvent(null)}
         onOpenImage={setLightboxImage}
       />
-      <ImageLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
+
+      <ImageLightbox
+        image={lightboxImage}
+        onClose={() => setLightboxImage(null)}
+      />
     </div>
   );
 }

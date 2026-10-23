@@ -1,6 +1,6 @@
 export const techfieeeestaData = {
   eyebrow: "TECHFIEEEESTA ’26",
-  title: "IEEE Week at ZHCET.",
+  title: "IEEE Week",
   text:
     "A week of technical, creative and community activities. The schedule below is kept editable so confirmed venues and details can be updated later.",
   bannerSrc: "/branding/techfieeesta-banner.jpeg",

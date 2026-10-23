@@ -1,10 +1,13 @@
+
 {
   "name": "ieee-stb-zhcet",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/generate-gallery.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/generate-gallery.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
