@@ -8,14 +8,10 @@ export const techfieeeestaData = {
 };
 
 export const techFiestaSchedule = [
-  ["04 Oct", "Treasure Hunt: Pirates’ Quest", "Electrical Lawn"],
-  ["05 Oct", "Chess Tournament", "CGRE"],
-  ["06 Oct", "Hackathon Opening", "ML-12"],
-  ["07 Oct", "Quizverse + Pitch x Stick + Hackacthon Presentation", "Venue to be confirmed"],
-  ["08 Oct", "Hackathon Submission", "Online"],
-  ["09 Oct", "Heritage Walk", "Venue to be confirmed"],
-  ["10 Oct", "Gaming Tournament", "Venue to be confirmed"],
-  ["10 Oct", "Heritage Walk", "AMU Campus"],
-  ["11 Oct", "Retro Arcade Game Console Workshop", "Venue to be confirmed"],
-  ["12 Oct", "Felicitation Ceremony", "Venue to be confirmed"],
+  ["05 Oct", "Chess Tournament", "NL-26"],
+  ["09 Oct", "Treasure Hunt: Pirates’ Quest", "Electrical Lawn"],
+  ["13 Oct", "Hack-IEEE Hackathon", "NL-26"],
+  ["14 Oct", "Gaming Tournament", "NL-26"],
+  ["16 Oct", "Retro Arcade Game Console Workshop", "NL-26"],
+  ["24 Oct", "Felicitation Ceremony", "Committee Room ML, ZHCET"],
 ];

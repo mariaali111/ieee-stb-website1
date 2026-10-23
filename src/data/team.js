@@ -37,6 +37,7 @@ export const teams = [
       "Zainab Khan", 
       "Kunal Varshney",
       "Alishba Khan",
+      "Adeeba Ekbal",
       "Ashutosh Gautam", 
       "Tanishka Singh",
     ],

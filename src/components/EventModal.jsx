@@ -1,4 +1,4 @@
-import { ArrowUpRight, CalendarDays, CheckCircle2, MapPin, X } from "lucide-react";
+import { ArrowUpRight, CalendarDays, CheckCircle2, MapPin, X, ZoomIn } from "lucide-react";
 
 export default function EventModal({ event, onClose, onOpenImage }) {
   if (!event) return null;
@@ -23,7 +23,9 @@ export default function EventModal({ event, onClose, onOpenImage }) {
             onClick={() => onOpenImage({ src: event.image, alt: `${event.title} poster` })}
           >
             <img src={event.image} alt={`${event.title} poster`} />
-            <span className="poster-zoom-hint">CLICK TO VIEW LARGER</span>
+            <span className="poster-zoom-hint" aria-hidden="true">
+              <ZoomIn size={18} />
+            </span>
           </button>
         )}
 

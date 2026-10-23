@@ -26,7 +26,6 @@ export default function Events({ onSelectEvent }) {
           >
             <div className="event-topline">
               <span>{event.category}</span>
-              <span>{event.status}</span>
             </div>
 
             {event.image ? (
