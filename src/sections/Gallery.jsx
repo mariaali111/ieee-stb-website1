@@ -31,11 +31,36 @@ export default function Gallery({
 
 const categories = ["All", ...galleryCategories];
 
-  const visibleImages = fullGallery
+const sortByImageNumber = (a, b) => {
+  const getNumber = (image) =>
+    Number(image.src.match(/image[_-]?(\d+)/i)?.[1] ?? 0);
+
+  return getNumber(a) - getNumber(b);
+};
+
+const visibleImages = (
+  fullGallery
     ? activeCategory === "All"
       ? images
       : images.filter((image) => image.category === activeCategory)
-    : images.slice(0, 4);
+    : images.slice(0, 4)
+).sort(sortByImageNumber);
+
+/* if i want specific 4 photos
+const featuredPhotos = [
+  "/gallery/techfieesta_26/image_99.jpg",
+  "/gallery/techfieesta_26/image_85.jpg",
+  "/gallery/community/image_12.jpg",
+  "/gallery/orientations/image_5.jpg",
+];
+
+const visibleImages = fullGallery
+  ? activeCategory === "All"
+    ? images
+    : images.filter((image) => image.category === activeCategory)
+  : featuredPhotos
+      .map((src) => images.find((image) => image.src === src))
+      .filter(Boolean); */
 
   return (
     <section

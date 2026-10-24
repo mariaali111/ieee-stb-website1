@@ -26,12 +26,8 @@ const categoryOrder = [
 ];
 
 function getImages(directory) {
-  if (!fs.existsSync(directory)) {
-    console.error(`Gallery directory not found: ${directory}`);
-    process.exit(1);
-  }
-
-  return fs.readdirSync(directory, { withFileTypes: true })
+  return fs
+    .readdirSync(directory, { withFileTypes: true })
     .flatMap((entry) => {
       const fullPath = path.join(directory, entry.name);
 
@@ -48,7 +44,13 @@ function getImages(directory) {
       }
 
       return [];
-    });
+    })
+    .sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      })
+    );
 }
 
 function getCategory(filePath) {
@@ -86,12 +88,19 @@ const orderedFolders = [
 ];
 
 // Include Uncategorized only if images exist directly inside public/gallery.
-const files = getImages(galleryRoot).sort((a, b) =>
-  a.localeCompare(b, undefined, {
-    numeric: true,
-    sensitivity: "base",
-  })
-);
+const files = getImages(galleryRoot).sort((a, b) => {
+  const categoryA = path.relative(galleryRoot, a).split(path.sep)[0];
+  const categoryB = path.relative(galleryRoot, b).split(path.sep)[0];
+
+  if (categoryA !== categoryB) {
+    return categoryA.localeCompare(categoryB);
+  }
+
+  const numberA = Number(path.basename(a).match(/\d+/)?.[0] ?? 0);
+  const numberB = Number(path.basename(b).match(/\d+/)?.[0] ?? 0);
+
+  return numberA - numberB;
+});
 
 const galleryData = files.map((file, index) => {
   const relativePath = path.relative("public", file)
