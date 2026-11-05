@@ -68,7 +68,10 @@ export const teams = [
   {
     name: "Industry Relations",
     lead: "Ahmad Zakariya",
-    members: ["Umaimah Mushtaq"],
+    members: [
+      "Md Adnan",
+      "Umaimah Mushtaq",
+    ],
   },
   {
     name: "Outreach & Membership",
@@ -128,7 +131,6 @@ export const teams = [
     name: "Volunteer Corps",
     lead: null,
     members: [
-      "Md Adnan",
       "Zainul Abideen", 
       "Umra Khan",
     ],
